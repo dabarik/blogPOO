@@ -46,25 +46,64 @@ if (!empty($_POST['modifier'])){
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center">Blog</h1>
-        <div class="row">
 
 
-        </div>
-        <h1>modifier</h1>
-        <div class="row">
-            <form action="" method="POST">
-                <input value="<?= $objet->getTitle()?>"name="title" style="width:200px; height:30px;">
-
-                <textarea name="content" cols="30" rows="10"><?= $objet->getContent()?></textarea>
-
-                <input type="submit" name="modifier" value="modifier">
 
 
-            </form>
-        </div>
+
+<!--Main Navigation-->
+<header>
+
+<nav class="navbar navbar-expand-lg navbar-dark default-color">
+    <a class="navbar-brand" href="index.php"><strong>Blog</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Connexion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Inscription</a>
+        </li>
+      </ul>
     </div>
+  </nav>
+
+</header>
+<!--Main Navigation-->
+    <div class="container">
+    <form action="" method="POST">
+        <h1 class="text-center">Blog</h1>   
+                <div class="md-form">
+                    <input value="<?= $objet->getTitle()?>" name="title" type="text" id="form1" class="form-control">
+                    <label for="form1">Titre</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea3">Contenu</label>
+                    <textarea class="form-control" name="content" id="exampleFormControlTextarea3" rows="7"><?= $objet->getContent()?></textarea>
+                </div>
+
+                <input type="submit" name="modifier" value="modifier" class="btn btn-elegant">
+            
+            
+            
+                       <!-- Material input -->
+             
+            </form>
+    </div>
+
+
+
+
+
+    
 
 
     <!-- JQuery -->

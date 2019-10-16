@@ -39,20 +39,93 @@ $posts = $pt->all();
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+
+
+<!--Main Navigation-->
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark default-color">
+    <a class="navbar-brand" href="index.php"><strong>Blog</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Connexion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Inscription</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+</header>
+<!--Main Navigation-->
+
+<a href='deconnexion.php'><button type="button" class="btn btn-danger">Se déconnecter</button></a>
+
     <div class="container">
         <h1 class="text-center">Blog</h1>
+        <a href="creation.php" class="btn btn-elegant">Création</a>
         <div class="row">
+
+        
+
+
+        
             <?php foreach($posts as $post): ?>
                 <div class="col-md-4">
+
+                <!-- Card -->
+                <div class="card">
+
+                <!-- Card image -->
+                <div class="view overlay">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+                    <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body">
+
+                    <!-- Title -->
                     <h2><?= $post['title'] ?></h2>
-                    <p><?= $post['content'] ?></p>
+                    <!-- Text -->
+                    <p><?= $post['content'] ?></p> 
+                                       
                     <a href="modifier.php?id= <?= $post['id'] ?>" class="btn btn-elegant">Modifier</a>
                     <a href="index.php?id=<?= $post['id'] ?>" class="btn btn-elegant">Supprimer</a>
                     <a href="afficher.php?id= <?= $post['id'] ?>" class="btn btn-elegant">afficher</a>
+
+                </div>
+
+                </div>
+                <!-- Card -->
+                    
+
                 </div>
             <?php endforeach; ?>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+    
 
 
     <!-- JQuery -->
