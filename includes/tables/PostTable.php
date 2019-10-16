@@ -3,6 +3,7 @@
 class PostTable
 {
     protected $table = 'posts';
+    protected $user = 'utilisateur';
     private $db;
 
     public function __construct()
@@ -60,6 +61,24 @@ class PostTable
         $sth = $this->db->prepare("DELETE FROM {$this->table} WHERE id = :id");
         $sth->bindParam(':id', $id);
         $result = $sth->execute();
+    }
+
+    public function create_account(Post $post) : void
+    {
+        $sth = $this->db->prepare("INSERT INTO {$this->user} (pseudo, mail, mdp) VALUES (:pseudo, :mail, :mdp)");
+        $sth->bindParam(':pseudo', $post->getPseudo());
+        $sth->bindParam(':mail', $post->getMail());
+        $sth->bindParam(':mdp', $post->getMdp());
+        $result = $sth->execute();
+    }
+
+    public function connexion(Post $post) : void
+    {
+        $sth = $this->db->prepare("SELECT * FROM {$this->user} WHERE mail = :mail && mdp = :mdp");
+        $sth->bindParam(':mail', $post->getMail());
+        $sth->bindParam(':mdp', $post->getMdp());
+        $result = $sth->execute();
+        $nb_con = $conn->rowcount();
     }
 
 }

@@ -10,14 +10,6 @@ if(!empty(($_GET['id']))){
     header('location:index.php');
 }
 
-
-$post = new Post();
-$post->setTitle("fef");
-$post->setContent("faef");
-$post->setID(54);
-$pt->update($post);
-
-
 $posts = $pt->all();
 
 ?>
@@ -56,10 +48,10 @@ $posts = $pt->all();
           <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Connexion</a>
+          <a class="nav-link" href="connexion.php">Connexion</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Inscription</a>
+          <a class="nav-link" href="inscription.php">Inscription</a>
         </li>
       </ul>
     </div>
@@ -103,7 +95,7 @@ $posts = $pt->all();
                                        
                     <a href="modifier.php?id= <?= $post['id'] ?>" class="btn btn-elegant">Modifier</a>
                     <a href="index.php?id=<?= $post['id'] ?>" class="btn btn-elegant">Supprimer</a>
-                    <a href="afficher.php?id= <?= $post['id'] ?>" class="btn btn-elegant">afficher</a>
+                    <p class="text-center"><a href="afficher.php?id= <?= $post['id'] ?>" class="btn btn-elegant">Afficher</a></p>
 
                 </div>
 
