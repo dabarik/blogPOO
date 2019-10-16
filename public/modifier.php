@@ -2,23 +2,30 @@
 
 require_once '../includes/config.php';
 
+error_reporting(E_ALL | E_STRICT);
+ini_set('display_errors', 'On');
+
 $pt = new PostTable();
 
-if(!empty(($_GET['id']))){
-    $getid = intval($_GET['id']);
-    $pt->delete($getid);
-    header('location:index.php');
+$id = $_GET['id'];
+
+$objet = $pt->get($id);
+
+if (!empty($_POST['modifier'])){
+    if(!empty($_POST['title'] && !empty($_POST['content']))) {
+
+        $post = new Post();
+        $post->setTitle($_POST['title']);
+        $post->setContent($_POST['content']);
+        $post->setId($id);
+        $pt->update($post);
+
+        header('location:index.php');
+
+    }
 }
 
 
-$post = new Post();
-$post->setTitle("fef");
-$post->setContent("faef");
-$post->setID(54);
-$pt->update($post);
-
-
-$posts = $pt->all();
 
 ?>
 
@@ -42,15 +49,20 @@ $posts = $pt->all();
     <div class="container">
         <h1 class="text-center">Blog</h1>
         <div class="row">
-            <?php foreach($posts as $post): ?>
-                <div class="col-md-4">
-                    <h2><?= $post['title'] ?></h2>
-                    <p><?= $post['content'] ?></p>
-                    <a href="modifier.php?id= <?= $post['id'] ?>" class="btn btn-elegant">Modifier</a>
-                    <a href="index.php?id=<?= $post['id'] ?>" class="btn btn-elegant">Supprimer</a>
-                    <a href="afficher.php?id= <?= $post['id'] ?>" class="btn btn-elegant">afficher</a>
-                </div>
-            <?php endforeach; ?>
+
+
+        </div>
+        <h1>modifier</h1>
+        <div class="row">
+            <form action="" method="POST">
+                <input value="<?= $objet->getTitle()?>"name="title" style="width:200px; height:30px;">
+
+                <textarea name="content" cols="30" rows="10"><?= $objet->getContent()?></textarea>
+
+                <input type="submit" name="modifier" value="modifier">
+
+
+            </form>
         </div>
     </div>
 
