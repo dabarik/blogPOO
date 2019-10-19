@@ -72,13 +72,13 @@ class PostTable
         $result = $sth->execute();
     }
 
-    public function connexion(Post $post) : void
+    public function connexion(Post $post)
     {
-        $sth = $this->db->prepare("SELECT * FROM {$this->user} WHERE mail = :mail && mdp = :mdp");
+        $sth = $this->db->prepare("SELECT * FROM {$this->user} WHERE mail = :mail AND mdp = :mdp");
         $sth->bindParam(':mail', $post->getMail());
         $sth->bindParam(':mdp', $post->getMdp());
-        $result = $sth->execute();
-        $nb_con = $conn->rowcount();
+        $sth->execute();
+        return $sth;
     }
 
 }

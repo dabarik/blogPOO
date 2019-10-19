@@ -59,16 +59,12 @@ $objet = $pt->get($id);
 </header>
 <!--Main Navigation-->
 
-    <h1 class="text-center">Titre</h1>
-    </br>
-    <p class="text-center"><?= $objet->getTitle() ?></p>
+    <h1 class="text-center"><?= $objet->getTitle() ?></h1>
 
     </br>
     </br>
 
 
-    <h1 class="text-center">Contenu</h1>
-    </br>
 
     <p class="text-center"><?= $objet->getContent() ?></p>
          

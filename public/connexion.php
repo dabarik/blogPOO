@@ -2,6 +2,7 @@
 
 session_start();
 
+
 require_once '../includes/config.php';
 
 $pt = new PostTable();
@@ -15,7 +16,8 @@ if (!empty($_POST['submit'])){
       $post = new Post();
       $post->setMail($_POST['mail']);
       $post->setMdp($_POST['mdp']);
-      $pt->connexion($post);
+      $conn = $pt->connexion($post);
+      
       
       $nb_con = $conn->rowcount();
 
