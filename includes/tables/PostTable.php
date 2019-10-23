@@ -76,8 +76,16 @@ class PostTable
     {
         $sth = $this->db->prepare("SELECT * FROM {$this->user} WHERE mail = :mail AND mdp = :mdp");
         $sth->bindParam(':mail', $post->getMail());
-        $sth->bindParam(':mdp', $post->getMdp());
+        $sth->bindParam(':mdp', sha1($post->getMdp()));
         $sth->execute();
+        return $sth;
+    }
+
+    public function recuperer_user(int $id){
+        $sth = $this->db->prepare("SELECT * FROM {$this->user} WHERE id = :id");
+        $sth->bindParam(':id', $id);
+        $sth->execute();
+        $sth = $sth->fetch();
         return $sth;
     }
 

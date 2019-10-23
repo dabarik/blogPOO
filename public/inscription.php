@@ -12,11 +12,11 @@ if(!empty($_POST['submit'])){
         $post = new Post();
         $post->setPseudo($_POST['pseudo']);
         $post->setMail($_POST['mail']);
-        $post->setMdp($_POST['mdp']);
+        $post->setMdp(sha1($_POST['mdp']));
 
         $pt->create_account($post);
 
-        header('location:index.php');
+        header('location:connexion.php');
 
         } else{
             $erreur="erreur";

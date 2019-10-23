@@ -8,8 +8,6 @@ require_once '../includes/config.php';
 $pt = new PostTable();
 
 
-
-
 if (!empty($_POST['submit'])){
   if(!empty($_POST['mail'] && !empty($_POST['mdp']))){
 
@@ -19,7 +17,7 @@ if (!empty($_POST['submit'])){
       $conn = $pt->connexion($post);
       
       
-      $nb_con = $conn->rowcount();
+      $nb_con = $conn->rowcount();  
 
       if ($nb_con == 1){
 
@@ -99,7 +97,7 @@ if (!empty($_POST['submit'])){
 
       <!-- Register -->
       <p>Toujours pas membre ?
-        <a href='formulaire.php'>Inscription</a>
+        <a href='inscription.php'>Inscription</a>
       </p>
 
 

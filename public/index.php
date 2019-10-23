@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../includes/config.php';
 
 $pt = new PostTable();
@@ -8,6 +8,14 @@ if(!empty(($_GET['id']))){
     $getid = intval($_GET['id']);
     $pt->delete($getid);
     header('location:index.php');
+}
+
+if (isset($_SESSION['id'])){
+
+  $userid = $_SESSION['id'];
+
+  $user = $pt->recuperer_user($userid);
+  
 }
 
 $posts = $pt->all();
@@ -61,9 +69,10 @@ $posts = $pt->all();
 <!--Main Navigation-->
 
 <a href='deconnexion.php'><button type="button" class="btn btn-danger">Se déconnecter</button></a>
-
+      <p class="text-right">Connecté en tant que <?= $user['pseudo'] ?></p>
     <div class="container">
         <h1 class="text-center">Blog</h1>
+  
         <a href="creation.php" class="btn btn-elegant">Création</a>
         <div class="row">
 
